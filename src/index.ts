@@ -18,7 +18,7 @@ export class MySqlTransformer {
         }
     }
 
-    mysql_escape_string(str: string) {
+    escape_string(str: string) {
         if (!str) return str;
 
         return str
