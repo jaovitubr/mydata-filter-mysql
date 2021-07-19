@@ -20,13 +20,13 @@ Transform a filter string to a Mysql query
 
 ```javascript
 import { ParseSync } from "odata-filter";
-import MysqlTransformer from "odata-filter-mysql";
+import MySqlTransformer from "odata-filter-mysql";
 
 const filter = `(user.username == "Ana") or (username == "Mari")`;
 
 try {
     const query = ParseSync(filter, {
-        transformer: new MysqlTransformer()
+        transformer: new MySqlTransformer()
     });
 
     console.log(query); // (`user`.`username" = 'Ana') OR (`username` = 'Ana')
@@ -39,12 +39,12 @@ Transform a filter string to a Mysql query asynchronously
 
 ```javascript
 import { ParseSync } from "odata-filter";
-import MysqlTransformer from "odata-filter-mysql";
+import MySqlTransformer from "odata-filter-mysql";
 
 const filter = `(user.username == "Ana") or (username == "Mari")`;
 
 Parse(filter, {
-    transformer: new MysqlTransformer()
+    transformer: new MySqlTransformer()
 }).then(query => {
     console.log(query); // (`user`.`username" = 'Ana') OR (`username` = 'Ana')
 }).catch(error => {
