@@ -1,7 +1,7 @@
 {
   "name": "odata-filter-mysql",
   "description": "Mysql query transformer for odata-filter package",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [

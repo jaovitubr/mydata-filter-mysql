@@ -58,3 +58,22 @@ Name | Type | Description
 ------------ | ------------- | -------------
 max_inline_functions | number | Define max inline call functions
 scope | string[][] | Define scope with available identifiers
+
+## Supported Inline Functions
+Name | Arguments
+------------ | -------------
+ROUND | Number \| Identifier
+CEIL | Number \| Identifier
+FLOOR | Number \| Identifier
+LOWER | String \| Identifier
+UPPER | String \| Identifier
+TRIM | String \| Identifier
+CONTAINS | String \| Identifier, String \| Identifier \| Number
+STARTS_WITH | String \| Identifier, String \| Identifier \| Number
+ENDS_WITH | String \| Identifier, String \| Identifier \| Number
+CONCAT | String \| Identifier \| Number, ...
+YEAR | String \| Identifier
+MONTH | String \| Identifier
+HOUR | String \| Identifier
+MINUTE | String \| Identifier
+SECOND | String \| Identifier
