@@ -48,3 +48,5 @@ export class MySqlTransformer {
             });
     }
 }
+
+export default MySqlTransformer;
