@@ -1,4 +1,4 @@
-# mydData Filter - Mysql Transformer
+# myData Filter - Mysql Transformer
 MySql transformer for [mydata-filter](https://www.npmjs.com/package/mydata-filter) package
 
 [![npm version](https://badge.fury.io/js/mydata-filter-mysql.svg)](https://badge.fury.io/js/mydata-filter-mysql)
