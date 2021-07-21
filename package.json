@@ -1,6 +1,6 @@
 {
-  "name": "odata-filter-mysql",
-  "description": "Mysql query transformer for odata-filter package",
+  "name": "mydata-filter-mysql",
+  "description": "Mysql query transformer for mydata-filter package",
   "version": "1.0.5",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -15,9 +15,9 @@
   },
   "author": "João Vitor Machado",
   "license": "MIT",
-  "homepage": "https://github.com/joaovitmac/odata-filter-mysql#readme",
+  "homepage": "https://github.com/joaovitmac/mydata-filter-mysql#readme",
   "bugs": {
-    "url": "https://github.com/joaovitmac/odata-filter-mysql/issues"
+    "url": "https://github.com/joaovitmac/mydata-filter-mysql/issues"
   },
   "keywords": [
     "odata",
