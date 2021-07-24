@@ -1,26 +1,30 @@
 import FUNCTION_CALL from "./function_call";
-import IDENTIFIER from "./identifier";
-import IDENTIFIER_PATH from "./identifier_path";
+import ASC from "./sorting/asc";
+import DESC from "./sorting/desc";
+import SORTING_LIST from "./sorting/sorting_list";
+import IDENTIFIER from "./identifiers/identifier";
+import IDENTIFIER_PATH from "./identifiers/identifier_path";
 import PARENTHESES from "./parentheses";
-import OR from "./or";
-import AND from "./and";
-import LT from "./lt";
-import GT from "./gt";
-import LE from "./le";
-import GE from "./ge";
-import NEQ from "./neq";
-import EQ from "./eq";
-import CONTAINS from "./contains";
-import CONTAINS_WORD from "./contains_word";
-import STARTS_WITH from "./starts_with";
-import ENDS_WITH from "./ends_with";
-import ADDITION from "./addiction";
-import SUBTRACTION from "./subtraction";
-import MULTIPLICATION from "./multiplication";
-import DIVISION from "./division";
-import STRING from "./string";
-import NUMBER from "./number";
-import BOOLEAN from "./boolean";
+import OR from "./operators/or";
+import AND from "./operators/and";
+import LT from "./operators/lt";
+import GT from "./operators/gt";
+import LE from "./operators/le";
+import GE from "./operators/ge";
+import NEQ from "./operators/neq";
+import EQ from "./operators/eq";
+import CONTAINS from "./operators/contains";
+import CONTAINS_WORD from "./operators/contains_word";
+import STARTS_WITH from "./operators/starts_with";
+import ENDS_WITH from "./operators/ends_with";
+import ADDITION from "./operators/addiction";
+import SUBTRACTION from "./operators/subtraction";
+import MULTIPLICATION from "./operators/multiplication";
+import DIVISION from "./operators/division";
+import STRING from "./data_types/string";
+import NUMBER from "./data_types/number";
+import BOOLEAN from "./data_types/boolean";
+
 import { MySqlTransformer } from "..";
 
 export interface IRule {
@@ -32,6 +36,9 @@ export interface IRuleObject {
 }
 
 const Rules: IRuleObject = {
+    ASC,
+    DESC,
+    SORTING_LIST,
     FUNCTION_CALL,
     IDENTIFIER,
     IDENTIFIER_PATH,

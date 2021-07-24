@@ -1,4 +1,4 @@
-import { MySqlTransformer } from "..";
+import { MySqlTransformer } from "../..";
 
 export default function CONTAINS_WORD(node: any, ctx: MySqlTransformer) {
     const possible_types = ["STRING", "IDENTIFIER", "IDENTIFIER_PATH", "FUNCTION_CALL"];

@@ -1,4 +1,4 @@
-import { MySqlTransformer } from "..";
+import { MySqlTransformer } from "../..";
 
 export default function IDENTIFIER_PATH(node: any, ctx: MySqlTransformer) {
     const identifier = `\`${node.data.map((identifier: any) => identifier.value).join("`.`")}\``;
