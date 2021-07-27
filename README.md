@@ -43,7 +43,7 @@ Transform a filter query string into a MySQL ORDER BY clause query
 import { ParseSync } from "mydata-filter";
 import MySqlTransformer from "mydata-filter-mysql";
 
-const filter = `(user.username == "Ana") or (username == "Mari")`;
+const filter = `person.age ASC`;
 
 try {
     const query = ParseSync(filter, {
@@ -52,7 +52,7 @@ try {
         })
     });
 
-    console.log(query); // (`user`.`username" = 'Ana') OR (`username` = 'Ana')
+    console.log(query); // `person`.`age` ASC
 } catch (error) {
     console.error(error);
 }
