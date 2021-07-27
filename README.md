@@ -16,7 +16,7 @@ npm install mydata-filter-mysql
 
 ## Usage
 
-Transform a filter string to a Mysql query
+Transform a filter query string into a MySQL WHERE clause query
 
 ```javascript
 import { ParseSync } from "mydata-filter";
@@ -26,7 +26,9 @@ const filter = `(user.username == "Ana") or (username == "Mari")`;
 
 try {
     const query = ParseSync(filter, {
-        transformer: new MySqlTransformer()
+        transformer: new MySqlTransformer({
+            clause: "WHERE"
+        })
     });
 
     console.log(query); // (`user`.`username" = 'Ana') OR (`username` = 'Ana')
@@ -35,7 +37,7 @@ try {
 }
 ```
 
-Transform a filter string to a Mysql query asynchronously
+Transform a filter query string into a MySQL ORDER BY clause query
 
 ```javascript
 import { ParseSync } from "mydata-filter";
@@ -43,21 +45,59 @@ import MySqlTransformer from "mydata-filter-mysql";
 
 const filter = `(user.username == "Ana") or (username == "Mari")`;
 
-Parse(filter, {
-    transformer: new MySqlTransformer()
-}).then(query => {
+try {
+    const query = ParseSync(filter, {
+        transformer: new MySqlTransformer({
+            clause: "ORDER"
+        })
+    });
+
     console.log(query); // (`user`.`username" = 'Ana') OR (`username` = 'Ana')
-}).catch(error => {
+} catch (error) {
     console.error(error);
-});
+}
+```
+
+Transform a filter query string into a MySQL query with specific features
+
+```javascript
+import { ParseSync } from "mydata-filter";
+import MySqlTransformer from "mydata-filter-mysql";
+
+const filter = `"ana" == "Ana"`;
+
+try {
+    const query = ParseSync(filter, {
+        transformer: new MySqlTransformer({
+            features: [
+                "EQ",
+                "NEQ",
+
+                "BOOLEAN",
+                "NUMBER",
+                "STRING",
+            ],
+            root_features: [
+                "EQ",
+                "NEQ",
+            ]
+        })
+    });
+
+    console.log(query); // "ana" == "Ana"
+} catch (error) {
+    console.error(error);
+}
 ```
 
 ## Constructor optional options
-
 Name | Type | Description
 ------------ | ------------- | -------------
 max_inline_functions | number | Define max inline call functions
 scope | string[][] | Define scope with available identifiers
+clause | "WHERE" \| "ORDER" | Specify pre-available [features](https://github.com/joaovitmac/mydata-filter#supported-features-identifiers-name) model
+features | string[] | Defines all available [features](https://github.com/joaovitmac/mydata-filter#supported-features-identifiers-name)
+root_features | string[] | Defines the specific [features](https://github.com/joaovitmac/mydata-filter#supported-features-identifiers-name) available in the root
 
 ## Supported Inline Functions
 Name | Arguments
@@ -77,3 +117,9 @@ MONTH | String \| Identifier
 HOUR | String \| Identifier
 MINUTE | String \| Identifier
 SECOND | String \| Identifier
+
+## Supported Sorting
+Name | Alias
+------------ | -------------
+Ascending | ASC
+Descending | DESC
