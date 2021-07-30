@@ -12,17 +12,15 @@ export interface MySqlTransformerOptions {
 export class MySqlTransformer {
     inline_functions = 0;
     offset = -1;
-    features: string[] = [];
-    root_features: string[] = [];
 
     constructor(public options: MySqlTransformerOptions = {}) {
         const clause = this.options.clause ? clauses[this.options.clause] : undefined;
 
-        this.root_features = [...(clause?.root_features || []), ...(this.options.root_features || [])];
-        this.features = [...(clause?.features || []), ...(this.options.features || [])];
+        options.root_features = [...(clause?.root_features || []), ...(options.root_features || [])];
+        options.features = [...(clause?.features || []), ...(options.features || [])];
     }
 
-    transform(rule: any) {
+    transform(rule: any): string {
         this.offset++;
 
         if (Object.keys(rules).includes(rule.type)) {
@@ -41,8 +39,16 @@ export class MySqlTransformer {
         }
 
         if (
-            (this.offset === 0 && this.root_features.length > 0 && !this.root_features.includes(rule.type)) ||
-            (this.features.length > 0 && !this.features.includes(rule.type))
+            (
+                this.options.root_features &&
+                this.offset === 0 &&
+                this.options.root_features.length > 0 &&
+                !this.options.root_features.includes(rule.type)
+            ) || (
+                this.options.features &&
+                this.options.features.length > 0 &&
+                !this.options.features.includes(rule.type)
+            )
         ) {
             throw new Error(`Unexpected ${rule.type} token${rule.value ? `: ${rule.value}` : ""}`);
         }
